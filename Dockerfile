@@ -1,12 +1,15 @@
-FROM ubuntu
-RUN apt-get -y update
-RUN apt-get install -y wget gzip zip bzip2 curl build-essential
+FROM ubuntu:16.04
 
+MAINTAINER cheng gong <512543469@qq.com>
+
+RUN apt-get -y update &&\
+         apt-get install -y wget gzip zip bzip2 curl build-essential
 
 ### install conda 
 RUN  wget https://repo.continuum.io/miniconda/Miniconda2-latest-Linux-x86_64.sh &&\
           bash Miniconda2-latest-Linux-x86_64.sh &&\
           export PATH=~/miniconda2/bin:$PATH
+
 ### conda update
 RUN  conda update --all -y &&\
           conda config --add channels r  &&\
